@@ -127,7 +127,6 @@ async def on_ready():
                 if entry not in guild_entries:
                     utils.config.config["guilds"][str(guild.id)][entry] = utils.config.config["guild template"][entry]
 
-
     utils.config.save_config()
     reload_extensions.start()
 
