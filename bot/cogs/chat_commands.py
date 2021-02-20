@@ -10,17 +10,14 @@ class ChatCommands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, msg):
-        for command in utils.config.config["guilds"][str(
-                msg.guild.id)]["commands"]:
+        for command in utils.config.config["guilds"][str(msg.guild.id)]["commands"]:
             if command == msg.content:
-                await msg.channel.send(utils.config.config["guilds"][str(
-                    msg.guild.id)]["commands"][msg.content])
+                await msg.channel.send(utils.config.config["guilds"][str(msg.guild.id)]["commands"][msg.content])
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def add_command(self, ctx, command_name: str, *, command_desc: str):
-        utils.config.config["guilds"][str(
-            ctx.message.guild.id)]["commands"][command_name] = command_desc
+        utils.config.config["guilds"][str(ctx.message.guild.id)]["commands"][command_name] = command_desc
         utils.config.save_config()
         await ctx.send(f"Added command {command_name}")
 
