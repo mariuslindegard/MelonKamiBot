@@ -14,6 +14,7 @@ class VoiceChannel(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.voice_chat.start()
+        print('Voice channel Cog loaded')
 
     @tasks.loop(seconds=5)
     async def voice_chat(self):
